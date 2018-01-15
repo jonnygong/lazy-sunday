@@ -1,6 +1,6 @@
 export default {
   // 接口请求baseUrl
-  baseUrl: 'http://server-jp.52admin.net/',
+  baseUrl: 'http://api.gong.ninja',
   // 接口文档地址
   api: {
     // apiForAuth: 'http://api.mp.kfw001.com/auth/wechat/getMember',

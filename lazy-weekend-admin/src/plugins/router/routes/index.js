@@ -1,4 +1,4 @@
-const Main = () => import ('@/views/Main/Main.vue');
+import Main from '@/views/Main/Main.vue';
 
 /**
  *  路由对象 meta 标签

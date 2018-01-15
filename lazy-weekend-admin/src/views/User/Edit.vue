@@ -55,7 +55,7 @@
                            v-model.number="formData[item.prop]"
                            :placeholder="item.placeholder ? item.placeholder : '请选择内容' ">
                     <el-option :label="option[item.labelProp]"
-                               :value="option[item.valueProp]"
+                               :value="option[item.valueProp]"  
                                :key="optionIndex"
                                v-for="(option, optionIndex) in options[item.option]"></el-option>
                 </el-select>

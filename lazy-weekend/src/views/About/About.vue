@@ -8,7 +8,7 @@
 
     <div class="container">
       <div class="pic_lg">
-        <img src="https://img.qianduanmei.com/2017/03/17/0019_line_logo.jpg" alt=""/>
+        <img src="../../assets/images/logo.png" alt=""/>
       </div>
       <div class="about">
         懒人周末是一款个性化的内容推荐应用，推荐精致的周末生活方式。内容涵盖同城活动、美食、周边游、运动、度假、演唱会、

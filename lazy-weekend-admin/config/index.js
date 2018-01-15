@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/admin/', // 静态文件存放目录
+    assetsPublicPath: '/', // 静态文件存放目录
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
@@ -30,7 +30,7 @@ module.exports = {
     proxyTable: {
         '/api': {
             // 本地调试API地址
-            target: 'http://server-jp.52admin.net:8360/',
+            target: 'http://api.gong.ninja/',
             changeOrigin: true,
             pathRewrite: {
                 '^/api': '/admin'

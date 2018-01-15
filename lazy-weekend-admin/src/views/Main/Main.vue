@@ -23,13 +23,13 @@
                     <span class="el-dropdown-link userinfo-inner">
                         <img :src="avatar"/> {{username}}</span>
                     <el-dropdown-menu slot="dropdown">
-                        <el-dropdown-item @click.native="handleRedirect('个人资料')">
+                        <!-- <el-dropdown-item @click.native="handleRedirect('个人资料')">
                             个人资料
                         </el-dropdown-item>
                         <el-dropdown-item @click.native="handleRedirect('个人设置')">
                             个人设置
-                        </el-dropdown-item>
-                        <el-dropdown-item divided @click.native="logout">
+                        </el-dropdown-item> -->
+                        <el-dropdown-item @click.native="logout">
                             注销
                         </el-dropdown-item>
                     </el-dropdown-menu>
@@ -214,7 +214,7 @@ export default {
     }
   },
   mounted() {
-    this.getUserData();
+    // this.getUserData();
     this.initTag();
   },
   components: {

@@ -1,5 +1,5 @@
 import systems from '@/configs';
-const baseUrl = systems.debug ? '/api/' : 'http://server-jp.52admin.net:8360/admin/';
+const baseUrl = systems.debug ? '/api/' : 'http://api.gong.ninja/admin/';
 export default {
   // 接口请求baseUrl
   baseUrl: baseUrl,
@@ -8,10 +8,10 @@ export default {
   api: {
     // 公共接口
     imageUpload: 'common/upload', // 文件上传
-    sysinfoProvince: 'Sysinfo/province', // 省市级三级联动
-    sysinfoCity: 'Sysinfo/city', // 省市级三级联动
-    sysinfoZone: 'Sysinfo/zone', // 省市级三级联动
-    adminMenu: 'admin/menu', // 用户权限
+    // sysinfoProvince: 'Sysinfo/province', // 省市级三级联动
+    // sysinfoCity: 'Sysinfo/city', // 省市级三级联动
+    // sysinfoZone: 'Sysinfo/zone', // 省市级三级联动
+    // adminMenu: 'admin/menu', // 用户权限
     
     logout: 'Login/logout', // 退出接口
     code: 'Login/code', // 二维码生成接口

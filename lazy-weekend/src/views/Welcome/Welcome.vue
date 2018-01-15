@@ -5,7 +5,7 @@
     </div> -->
     <!--轮播图-->
     <div class="carousel-wrap bg" id="carousel">
-     <mt-swipe :auto="4000" :show-indicators="false" speed="1000">
+     <mt-swipe :auto="4000" :show-indicators="false" :speed="1000">
   <mt-swipe-item v-for="(list,index) in slideList" :key="index">
     <img :src="list.cover" :alt="list.title">
     </mt-swipe-item>

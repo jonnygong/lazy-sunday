@@ -61,7 +61,7 @@
             },
         },
         mounted() {
-            this.getPersonData();
+            // this.getPersonData();
         }
     }
 </script>

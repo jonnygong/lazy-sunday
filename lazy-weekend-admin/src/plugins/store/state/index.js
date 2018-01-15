@@ -14,7 +14,7 @@ const nav = [{
   }]
 }, {
   name: '分类管理',
-  iconCls: 'fa fa-archive',
+  iconCls: 'fa fa-folder-open-o',
   url: '',
   children: [{
     name: "分类管理",
@@ -22,7 +22,7 @@ const nav = [{
   }]
 }, {
   name: '地区管理',
-  iconCls: 'fa fa-archive',
+  iconCls: 'fa fa-fax',
   url: '',
   children: [{
     name: "地区管理",
@@ -30,7 +30,7 @@ const nav = [{
   }]
 }, {
   name: '文章管理',
-  iconCls: 'fa fa-archive',
+  iconCls: 'fa fa-map-o',
   url: '',
   children: [{
     name: "文章管理",

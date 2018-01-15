@@ -7,7 +7,7 @@
     </mt-header>
 
     <div class="selected">
-      <ul v-infinite-scroll="loadMore"
+      <ul v-infinite-scroll="loadMore"  
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50">
         <li v-for="(item, index) in selectedList" :key="index">
@@ -88,17 +88,18 @@ export default {
         message: "操作成功！",
         position: "bottom",
         duration: 3000
-      });
+      }); 
     },
     async loadMore() {
         if(this.allLoaded) return
         this.pageNo += 1;
         let params = {
-          area: this.currArea.id,
+          // area: this.currArea.id,
+           type: this.$route.params.id,
           page: this.pageNo,
         };
         this.loading = true;
-        const res = await this.$http.get("articleList", params);
+        const res = await this.$http.get("articleList", this.$route.params.id == 0 ? {} : params);
         this.loading = false;
         console.log(res.data.length)
         if (res === null) return;
@@ -128,6 +129,15 @@ export default {
     height: 100%;
     background-color: #fff;
     margin-top: -0.5rem;
+    .loading_bottom {
+    text-align: center;
+    height: 5rem;
+    line-height: 100px;
+    color: #999;
+  }
+  .loading_circle {
+    display: inline-block;
+  }
     li {
       padding: 1rem 0;
       border-bottom: 1px solid #f2f2f2;

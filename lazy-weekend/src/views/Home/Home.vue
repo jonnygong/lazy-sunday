@@ -1,5 +1,7 @@
 <template>
   <div>
+    <Loader v-show="loader"></Loader>
+
     <!--菜单-->
     <transition name="fade">
       <div class="menu" v-if="showMenu">
@@ -35,11 +37,14 @@
 
       <div @click="changeShowMenu">
 
-        <img src="../../assets/images/logo.jpg" alt=""/>
+        <img src="../../assets/images/logo.png" alt=""/>
       </div>
+      <div class="search_wrap">
 
+      
       <input class="search" type="text" ref="searchVal" placeholder="请输入文章标题关键字">
       <i class="fa fa-search fa-2x icon" @click="toSearch"></i>
+      </div>
       <button @click="changeShowPlaceFilter">{{ currArea.area_name }}</button>
     </div>
 
@@ -62,7 +67,7 @@
       </div> -->
 
 
-       <mt-swipe :auto="4000" speed="1500">
+       <mt-swipe :auto="4000" :speed="1500">
   <mt-swipe-item v-for="(list,index) in slideList" :key="index">
     <img :src="list.cover" :alt="list.title">
     </mt-swipe-item>
@@ -95,7 +100,7 @@
       <div class="filter_l" @click="toCity()">同城活动</div>
       <div class="filter_r">
         <div class="like" @click="toPopular()">最受欢迎</div>
-        <div class="new" @click="toLabel('0')">最新活动</div>
+        <div class="new" @click="toNew(0)">最新活动</div>
       </div>
     </div>
 
@@ -122,6 +127,7 @@
 
 <script>
 import BScroll from "better-scroll";
+import Loader from "../../components/Loader";
 import { Loadmore } from "mint-ui";
 import { Spinner } from "mint-ui";
 import { Toast } from "mint-ui";
@@ -130,6 +136,7 @@ import { Swipe, SwipeItem } from "mint-ui";
 export default {
   data() {
     return {
+      loader: true,
       currentIndex: 0,
       timer: "",
       loading: false,
@@ -159,24 +166,24 @@ export default {
     };
   },
   methods: {
-    go() {
-      this.timer = setInterval(() => {
-        this.autoPlay();
-      }, 4000);
-    },
-    stop() {
-      clearInterval(this.timer);
-      this.timer = null;
-    },
-    change(index) {
-      this.currentIndex = index;
-    },
-    autoPlay() {
-      this.currentIndex++;
-      if (this.currentIndex > this.slideList.length - 1) {
-        this.currentIndex = 0;
-      }
-    },
+    // go() {
+    //   this.timer = setInterval(() => {
+    //     this.autoPlay();
+    //   }, 4000);
+    // },
+    // stop() {
+    //   clearInterval(this.timer);
+    //   this.timer = null;
+    // },
+    // change(index) {
+    //   this.currentIndex = index;
+    // },
+    // autoPlay() {
+    //   this.currentIndex++;
+    //   if (this.currentIndex > this.slideList.length - 1) {
+    //     this.currentIndex = 0;
+    //   }
+    // },
     async loadMore() {
       if (this.allLoaded) return;
       this.pageNo += 1;
@@ -233,6 +240,7 @@ export default {
       const res = await this.$http.get("articleList", params);
       if (res === null) return;
       this.selectedList = res.data;
+      this.loader = false;
     },
     async getTagList() {
       let params = {};
@@ -292,10 +300,10 @@ export default {
       // const popular = 1;
       this.$router.push({ name: "分类", params: { area: this.currArea.id } });
     },
-    toNew() {
+    toNew(item) {
       // const popular = 1;
       // this.$router.push({ name: "分类", params: { area_id: ${item.area_id} } });
-      this.$router.push(`/label`);
+      this.$router.push(`/label/${item}`);
     },
     toSearch() {
       // const popular = 1;
@@ -319,16 +327,26 @@ export default {
     }
   },
   created() {
-    this.$nextTick(() => {
-      this.timer = setInterval(() => {
-        this.autoPlay();
-      }, 4000);
-    });
+    // this.$nextTick(() => {
+    //   this.timer = setInterval(() => {
+    //     this.autoPlay();
+    //   }, 4000);
+    // });
+    // this.$nextTick(() => {
+    //   setTimeout(function() {
+    //     var loader = this.$refs.loader_wrapper;
+    //     loader.className = "loader fadeout"; //使用渐隐的方法淡出loading page
+    //     setTimeout(function() {
+    //       loader.style.display = "none";
+    //     }, 1000);
+    //   }, 1000); //强制显示loading page 1s
+    // });
   },
   components: {
     //      Loadmore,
     Swipe,
-    SwipeItem
+    SwipeItem,
+    Loader: Loader
   },
   mounted() {
     this.getSlideList();
@@ -427,9 +445,13 @@ export default {
   // z-index: 9999;
 
   img {
-    width: 2rem;
-    height: 2rem;
-    margin: 0.5rem 1rem;
+    width: 3rem;
+    height: 3rem;
+    // margin: 0.5rem 1rem;
+  }
+  .search_wrap{
+    width: 100%;
+    position: relative;
   }
   .search {
     width: 100%;
@@ -437,19 +459,23 @@ export default {
     background-color: #f2f2f2;
     text-indent: 1rem;
     color: #3c424a;
+    margin-right: 3rem;
+    display: inline-block;
   }
   .icon {
-    float: right;
+    // float: right;
     width: 3rem;
     height: 2rem;
     color: #999;
     position: absolute;
-    top: 0.5rem;
-    right: 3.5rem;
+    top: 0.1rem;
+    right: -1rem;
+    display: inline-block;
+
   }
   button {
     /*display: block;*/
-    width: 5rem;
+    width: 6rem;
     height: 3rem;
     background-color: #fff;
   }

@@ -129,7 +129,7 @@
       }
     },
     mounted() {
-      this.getUserSettings();
+      // this.getUserSettings();
     },
     components: {
       'i-uploader': Uploader

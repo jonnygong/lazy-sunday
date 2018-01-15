@@ -67,7 +67,7 @@ import configs from '@/configs/api';
         return isJPG && isLt2M;
       },
       handleAvatarSuccess(res, file) {
-        this.cover = 'http://server-jp.52admin.net/'+res.data.url;
+        this.cover = 'http://api.gong.ninja/'+res.data.url;
       },
     }
   }
